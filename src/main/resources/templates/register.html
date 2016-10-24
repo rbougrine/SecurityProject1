@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Vibes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel = "stylesheet"/>
+
+
+
+
+</head>
+
+<body id="background" background="https://s18.postimg.org/e5uvpci55/background_Blue.jpg">
+<img id = 'logo' src="https://s15.postimg.org/asmn2pwa3/logo.png"/>
+
+<section id="login">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-wrap">
+                    <h1>Register</h1>
+                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                        <p>Use at least 8 characters. Don’t use a password from another site</p>
+                        <div class="form-group">
+                            <label for="key" class="sr-only">Password</label>
+                            <input type="password" name="key" id="key" class="form-control" placeholder="Password"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="rekey" class="sr-only">Re-enter</label>
+                            <input type="password" name="key" id="rekey" class="form-control" placeholder="Re-enter"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sel1">Select a security question:</label>
+                            <select class="form-control" id="sel1" name="Security question">
+                                <option value="question1">Name of your first pet</option>
+                                <option value="question2">Name of your first teacher</option>
+                                <option value="question3"> Your first car</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label  class="sr-only">Answer</label>
+                            <input type="text"  class="form-control" placeholder="Answer question"/>
+                            <br>
+                            <p>This is the generated pincode that will be used to recover your account, remember this code.</p>
+                        </div>
+                        <div class="form-group">
+                            <label  class="sr-only">pincode</label>
+                            <input type="text"  class="form-control" placeholder="Generated Pin"/>
+                        </div>
+
+
+                        <div class="form-button">
+                            <input type="submit" id="btn-back" class="btn btn-custom btn-lg" value="Back"/>
+                            <input type="submit" id="btn-login" class="btn btn-custom btn-lg" value="Log in"/>
+                        </div>
+                    </form>
+
+                    <hr/>
+                </div>
+            </div> <!-- /.col-xs-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section>
+</body>
+
+
+
+
+</html>
