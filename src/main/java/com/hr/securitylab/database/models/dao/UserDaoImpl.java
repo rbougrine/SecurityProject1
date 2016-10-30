@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao
 
     public User findUsername(String username)
     {
-        String hql = "FROM user u where u.username = :username";
+        String hql = "FROM User u where u.username = :username";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter("username", username);
         List<User> users = new ArrayList<User>();
@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao
     @Override
     public boolean checkUsernameExists(String username)
     {
-        String hql = "FROM user u WHERE u.username = :username";
+        String hql = "FROM User u WHERE u.username = :username";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter("username",username);
         Optional<User> result = Optional.ofNullable((User) query.uniqueResult());

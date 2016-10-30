@@ -11,7 +11,7 @@ public class NewUser
 {
 
     @Size(min=8, max=32)
- //   @UsernameNotInUse
+    @UsernameNotInUse
     @NotEmpty
     @NotNull
     private String username;
@@ -24,8 +24,12 @@ public class NewUser
 
     private String checkPassword;
 
+    @NotEmpty
+    @NotNull
     private String securityAnswer;
 
+    @NotEmpty
+    @NotNull
     private String securityQuestion;
 
     @NotEmpty
