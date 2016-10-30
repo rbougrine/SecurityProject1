@@ -9,42 +9,38 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
 @Repository
-public class  productDaoImpl implements productDao {
+public class ProductDaoImpl implements productDao
+{
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public boolean checkforexitingPk(String productKey) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productkey", productKey));
+    public boolean checkForExitingProductKey(String productKey)
+    {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productKey", productKey));
         return (Optional.ofNullable((Product) criteria.uniqueResult())).isPresent();
     }
 
     @Override
-    public boolean checkIfProductkeyIsUsed(String productKey) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productkey", productKey));
+    public boolean checkIfProductKeyIsUsed(String productKey)
+    {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productKey", productKey));
         Optional<Product> result = Optional.ofNullable((Product) criteria.uniqueResult());
         return result.isPresent() && result.get().isActivated();
     }
 
     @Override
-    public Product findProductByProductkey(String productKey) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productkey", productKey));
+    public Product findProductByProductKey(String productKey)
+    {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productKey", productKey));
         return (Product) criteria.uniqueResult();
     }
 
     @Override
-    public boolean checkIfPinIsValid(String productKey, String pin) {
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Product.class).add(Restrictions.like("productkey", productKey));
-        Optional<Product> result = Optional.ofNullable((Product) criteria.uniqueResult());
-        return result.isPresent() && result.get().getPin().equals(pin);
-    }
-
-    @Override
-    public void saveOrUpdate(Product product) {
+    public void saveOrUpdate(Product product)
+    {
         sessionFactory.getCurrentSession().saveOrUpdate(product);
-
     }
 }

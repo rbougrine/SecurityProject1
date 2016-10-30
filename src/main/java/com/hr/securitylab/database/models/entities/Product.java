@@ -19,26 +19,23 @@ import javax.persistence.*;
         @Column(name = "productKey", length = 16)
         private String productKey;
 
-        @Column(name = "pin", length = 6)
-        private String pin;
-
         @Column(name = "encryption_key")
         private String encryption_key;
 
         @Column(name = "activated")
         private boolean activated;
 
-        public Product() {
+        public Product()
+        {
         }
 
-        public Product(int id, User user, String productKey, String pin, boolean activated, String encryption_key) {
+        public Product(int id, User user, String productKey, boolean activated, String encryption_key)
+        {
             this.id = id;
             this.user = user;
             this.productKey = productKey;
-            this.pin = pin;
             this.encryption_key = encryption_key;
             this.activated = activated;
-
         }
 
         public int getId() {
@@ -71,14 +68,6 @@ import javax.persistence.*;
 
         public void setEncryption_key(String encryption_key) {
             this.encryption_key = encryption_key;
-        }
-
-        public String getPin() {
-            return pin;
-        }
-
-        public void setPin(String pin) {
-            this.pin = pin;
         }
 
         public boolean isActivated() {

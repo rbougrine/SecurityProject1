@@ -6,49 +6,48 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 @Repository
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService
+{
+
     private productDao productDao;
 
     @Autowired
-    public ProductServiceImpl(productDao productDao) {
+    public ProductServiceImpl(productDao productDao)
+    {
         this.productDao = productDao;
     }
 
-    public ProductServiceImpl() {
+    public ProductServiceImpl()
+    {
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean checkForExitingProductKey(String productKey)
+    {
+        return productDao.checkForExitingProductKey(productKey);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean checkIfProductKeyIsUsed(String productKey)
+    {
+        return productDao.checkIfProductKeyIsUsed(productKey);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Product findProductByProductKey(String productKey)
+    {
+        return productDao.findProductByProductKey(productKey);
     }
 
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean checkforexitingPk(String productKey) {
-        return productDao.checkforexitingPk(productKey);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public boolean checkIfProductkeyIsUsed(String productKey) {
-        return productDao.checkIfProductkeyIsUsed(productKey);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public Product findProductByProductkey(String productKey) {
-        return productDao.findProductByProductkey(productKey);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public boolean checkIfPinIsValid(String productKey, String pin) {
-        return productDao.checkIfPinIsValid(productKey,pin);
-    }
-
-    @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void saveOrUpdate(Product product) {
+    public void saveOrUpdate(Product product)
+    {
         productDao.saveOrUpdate(product);
-
     }
 }
