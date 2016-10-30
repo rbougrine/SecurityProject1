@@ -1,6 +1,5 @@
 package com.hr.securitylab.database.models.dao;
 
-
 import com.hr.securitylab.database.models.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
