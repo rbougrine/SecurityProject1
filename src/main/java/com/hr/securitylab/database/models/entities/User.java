@@ -11,8 +11,8 @@ public class User {
     @Column(name = "user_id")
     private int id;
 
-  // @OneToMany(mappedBy = "user")
-   // private Set<Product> products;
+    @OneToMany(mappedBy = "user")
+    private Set<Product> products;
 
     @Column(name = "username", length = 32)
     private String username;
@@ -20,15 +20,25 @@ public class User {
     @Column(name = "password", length = 32)
     private String password;
 
+    @Column(name = "securityAnswer", length = 32)
+    private String securityAnswer;
 
-    public User() {
+    @Column(name = "securityQuestion", length = 32)
+    private String securityQuestion;
+
+
+    public User()
+    {
     }
 
-    public User(int id, String username, String password) {
+    public User(int id, String username, Set<Product> products, String password, String securityAnswer, String securityQuestion)
+    {
         this.id = id;
-     // this.products = products;
+        this.products = products;
         this.username = username;
         this.password = password;
+        this.securityAnswer = securityAnswer;
+        this.securityQuestion = securityQuestion;
 
     }
 
@@ -40,9 +50,9 @@ public class User {
         this.id = id;
     }
 
-//    public Set<Product> getProducts() { return products; }
+    public Set<Product> getProducts() { return products; }
 
-//    public void setProducts(Set<Product> products) {  this.products = products;}
+    public void setProducts(Set<Product> products) {  this.products = products;}
 
     public String getUsername() {
         return username;
@@ -60,5 +70,20 @@ public class User {
         this.password = password;
     }
 
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {this.securityAnswer = securityAnswer;}
+
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
+    public void setSecurityQuestion(String securityQuestion) {this.securityQuestion = securityQuestion;}
+
 
 }
+
+
+

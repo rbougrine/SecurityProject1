@@ -1,68 +1,104 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Vibes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel = "stylesheet"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
 
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
 
-
-
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
-
 <body id="background" background="https://s18.postimg.org/e5uvpci55/background_Blue.jpg">
 <img id = 'logo' src="https://s15.postimg.org/asmn2pwa3/logo.png"/>
-
 <section id="login">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
                     <h1>Register</h1>
-                    <form role="form" action="#" th:action="@{/register}" th:object="${newuser}" method="post" id="login-form"
+                    <form action="#" th:action="@{/register}" th:object="${newuser}" method="post" id="login-form"
                           autocomplete="off">
-                        <!--<label for="username">Must be 8 to 20 characters</label>-->
-                        <input id="username" type="text" th:field="*{username}" class="form-control"
-                               placeholder="Username" />
 
-
-                        <p>Use at least 8 characters. Don’t use a password from another site</p>
+                        <div class="form-group">
+                            <!--<label for="username">Must be 8 to 20 characters</label>-->
+                            <input id="username" type="text" th:field="*{username}" class="form-control"
+                                   placeholder="Username"  maxlength="32"/>
+                            <th:block th:switch="${#fields.hasErrors('username')}">
+                                <p th:case="false" class="registrationDescription">Must contain 8 to 20 characters</p>
+                                <p th:case="true" class="errorText" th:errors="*{username}"></p>
+                            </th:block>
+                        </div>
                         <div class="form-group">
                             <!--<label for="password">Must be 8 to 20 characters, contain 1 uppercase character, 1 number</label>-->
                             <input id="password" type="password" th:field="*{password}" class="form-control"
-                                   placeholder="Password"  />
+                                   placeholder="Password"  maxlength="32"/>
+                            <th:block th:switch="${#fields.hasErrors('password')}">
+                                <p th:case="false" class="registrationDescription">Must contain 8 to 20 characters, 1
+                                    uppercase character, 1 number, 1 special character</p>
+                                <p th:case="true" class="errorText" th:errors="*{password}"></p>
+                            </th:block>
+                            <input id="matchingPassword" type="password" th:field="*{checkPassword}"
+                                   class="form-control" placeholder="Enter password again"  maxlength="32"/>
                         </div>
+                        <div class="form-group">
+
+                        </div>
+                        <div class="form-group">
+                            <!--<label for="password">Must be 8 to 20 characters, contain 1 uppercase character, 1 number</label>-->
+
+                            <div class="form-group">
+                                <label for="sel1">Select a security question:</label>
+                                <select class="form-control" id="sel1" name="Security question">
+                                    <option value="question1">Name of your first pet</option>
+                                    <option value="question2">Name of your first teacher</option>
+                                    <option value="question3"> Your first car</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="username">Must be 8 to 20 characters</label>-->
+                                <input id="securityQuestion" type="text" th:field="*{securityQuestion}" class="form-control"
+                                       placeholder="securityQuestion"  maxlength="32"/>
+                                <th:block th:switch="${#fields.hasErrors('securityQuestion')}">
+                                    <p th:case="false" class="registrationDescription">Must contain 8 to 20 characters</p>
+                                    <p th:case="true" class="errorText" th:errors="*{securityQuestion}"></p>
+                                </th:block>
+                            </div>
+                            <div class="form-group">
+                                <!--<label for="username">Must be 8 to 20 characters</label>-->
+                                <input id="securityAnswer" type="text" th:field="*{securityAnswer}" class="form-control"
+                                       placeholder="securityAnswer"  maxlength="32"/>
+                                <th:block th:switch="${#fields.hasErrors('securityAnswer')}">
+                                    <p th:case="false" class="registrationDescription">Must contain 8 to 20 characters</p>
+                                    <p th:case="true" class="errorText" th:errors="*{securityAnswer}"></p>
+                                </th:block>
+                            </div>
+                      </div>
 
                         <div class="form-group">
-                            <label for="sel1">Select a security question:</label>
-                            <select class="form-control" id="sel1" name="Security question">
-                                <option value="question1">Name of your first pet</option>
-                                <option value="question2">Name of your first teacher</option>
-                                <option value="question3"> Your first car</option>
-                            </select>
-                        </div>
+                            <!--<label for="matchingPassword">Must be 8 to 20 characters</label>-->
 
-                        <div class="form-group">
-                            <label  class="sr-only">Answer</label>
-                            <input type="text"  class="form-control" placeholder="Answer question"/>
-                            <br/>
-                            <p>This is the generated pincode that will be used to recover your account, remember this code.</p>
+                            <th:block th:if="${#fields.hasGlobalErrors()}">
+                                <p class = "errorText" th:each="err : ${#fields.globalErrors()}" th:text="${err}"></p>
+                            </th:block>
                         </div>
-
                         <div class="form-group">
-                            <!--<label for="productCode">Product key can be found on the box</label>-->
-                            <input id="productCode" type="text" th:field="*{productCode}" class="form-control"
+                            <!--<label for="productKey">Product key can be found on the box</label>-->
+                            <input id="productKey" type="text" th:field="*{productKey}" class="form-control"
                                    placeholder="Product key" maxlength="16"/>
-
+                            <th:block th:switch="${#fields.hasErrors('productKey')}">
+                                <p th:case="false" class="registrationDescription">Can be found on the box of the
+                                    product</p>
+                                <p th:case="true" class="errorText" th:errors="*{productKey}"></p>
+                            </th:block>
                         </div>
-
-                        <div class="form-button">
-                            <input type="submit" id="btn-back" class="btn btn-custom btn-lg" value="Back"/>
-                            <input type="submit" id="btn-login" class="btn btn-custom btn-lg" value="Register"/>
-                        </div>
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Send"/>
                     </form>
 
                     <hr/>
@@ -72,8 +108,4 @@
     </div> <!-- /.container -->
 </section>
 </body>
-
-
-
-
 </html>
