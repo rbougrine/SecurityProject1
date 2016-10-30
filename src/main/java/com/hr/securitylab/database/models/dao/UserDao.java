@@ -9,5 +9,11 @@ public interface UserDao
     void saveOrUpdate(User user);
 
     boolean checkUsernameExists(String username);
+
+    boolean checkIfAnswerIsValid(String productKey, String securityAnswer);
+
+    boolean checkIfQuestionIsValid(String productKey, String securityAnswer);
+
+    boolean checkIfKeyIsValid(String productKey);
 }
 

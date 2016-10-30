@@ -42,4 +42,24 @@ public class UserServiceImpl implements UserService
         return userDao.checkUsernameExists(username);
     }
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean checkIfAnswerIsValid(String productKey, String securityAnswer)
+    {
+        return userDao.checkIfAnswerIsValid(productKey, securityAnswer);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean checkIfQuestionIsValid(String productKey, String securityQuestion)
+    {
+        return userDao.checkIfQuestionIsValid(productKey, securityQuestion);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean checkIfKeyIsValid(String productKey)
+    {
+        return userDao.checkIfKeyIsValid(productKey);
+    }
 }
