@@ -33,9 +33,9 @@ public class NewUser
     private String securityQuestion;
 
     @NotEmpty
-  //  @ProductKeyExists
-    //@ProductKeyNotInUse
     @NotNull
+    @ProductKeyExists
+    @ProductKeyNotInUse
     private String productKey;
 
 
