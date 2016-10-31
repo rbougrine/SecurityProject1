@@ -1,6 +1,6 @@
-package com.hr.securitylab.annotations;
+package com.hr.securitylab.validationProcess.annotations;
 
-import com.hr.securitylab.validationClasses.ProductKeyExistsValidator;
+import com.hr.securitylab.validationProcess.validationClasses.UsernameNotInUseValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -13,11 +13,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({TYPE, FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
-@Constraint(validatedBy = ProductKeyExistsValidator.class)
+@Constraint(validatedBy = UsernameNotInUseValidator.class)
 @Documented
-public @interface ProductKeyExists
+public @interface UsernameNotInUse
 {
-    String message() default "Invalid productkey, please try again";
+    String message() default "Username is already used, please try again";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }
+

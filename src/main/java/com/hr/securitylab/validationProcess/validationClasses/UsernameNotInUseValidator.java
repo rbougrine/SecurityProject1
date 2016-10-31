@@ -1,7 +1,7 @@
-package com.hr.securitylab.validationClasses;
+package com.hr.securitylab.validationProcess.validationClasses;
 
 import com.hr.securitylab.database.models.DBFactory;
-import com.hr.securitylab.annotations.UsernameNotInUse;
+import com.hr.securitylab.validationProcess.annotations.UsernameNotInUse;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

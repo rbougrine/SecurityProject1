@@ -1,6 +1,6 @@
-package com.hr.securitylab.annotations;
+package com.hr.securitylab.validationProcess.annotations;
 
-import com.hr.securitylab.validationClasses.UsernameNotInUseValidator;
+import com.hr.securitylab.validationProcess.validationClasses.ValidPasswordValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -11,14 +11,17 @@ import java.lang.annotation.Target;
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({TYPE, FIELD, ANNOTATION_TYPE})
-@Retention(RUNTIME)
-@Constraint(validatedBy = UsernameNotInUseValidator.class)
 @Documented
-public @interface UsernameNotInUse
+@Constraint(validatedBy = ValidPasswordValidator.class)
+@Target({ TYPE, FIELD, ANNOTATION_TYPE })
+@Retention(RUNTIME)
+public @interface ValidPassword
 {
-    String message() default "Username is already used, please try again";
-    Class<?>[] groups() default {};
-    Class<? extends Payload>[] payload() default {};
-}
 
+    String message() default "Wrong password, please try again";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+
+}

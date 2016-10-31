@@ -20,6 +20,9 @@ public class User {
     @Column(name = "password", length = 32)
     private String password;
 
+    @Column(name = "role", length = 32)
+    private String role;
+
     @Column(name = "securityAnswer", length = 32)
     private String securityAnswer;
 
@@ -31,12 +34,13 @@ public class User {
     {
     }
 
-    public User(int id, String username, Set<Product> products, String password, String securityAnswer, String securityQuestion)
+    public User(int id, String username, String role ,Set<Product> products, String password, String securityAnswer, String securityQuestion)
     {
         this.id = id;
         this.products = products;
         this.username = username;
         this.password = password;
+        this.role = role;
         this.securityAnswer = securityAnswer;
         this.securityQuestion = securityQuestion;
 
@@ -69,6 +73,9 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    //still in contruction, need to add new table Role
+    public String getRole(){return "user"; }
 
     public String getSecurityAnswer() {
         return securityAnswer;

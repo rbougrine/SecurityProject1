@@ -1,6 +1,6 @@
-package com.hr.securitylab.validationClasses;
+package com.hr.securitylab.validationProcess.validationClasses;
 
-import com.hr.securitylab.annotations.SamePassword;
+import com.hr.securitylab.validationProcess.annotations.SamePassword;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.validation.ConstraintValidator;

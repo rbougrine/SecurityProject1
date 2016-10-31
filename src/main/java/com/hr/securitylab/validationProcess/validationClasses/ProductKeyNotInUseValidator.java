@@ -1,6 +1,6 @@
-package com.hr.securitylab.validationClasses;
+package com.hr.securitylab.validationProcess.validationClasses;
 
-import com.hr.securitylab.annotations.ProductKeyNotInUse;
+import com.hr.securitylab.validationProcess.annotations.ProductKeyNotInUse;
 import com.hr.securitylab.database.models.DBFactory;
 
 import javax.validation.ConstraintValidator;

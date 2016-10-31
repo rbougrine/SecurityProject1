@@ -1,7 +1,7 @@
-package com.hr.securitylab.validationClasses;
+package com.hr.securitylab.validationProcess.validationClasses;
 
 import com.google.common.base.Joiner;
-import com.hr.securitylab.annotations.ValidPassword;
+import com.hr.securitylab.validationProcess.annotations.ValidPassword;
 import org.passay.*;
 
 import javax.validation.ConstraintValidator;
