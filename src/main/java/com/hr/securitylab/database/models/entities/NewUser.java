@@ -6,10 +6,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.NotEmpty;
 
-
+@SamePassword.List({
+        @SamePassword(first = "password", second = "checkPassword", message = "These passwords don't match. Try again?")
+})
 public class NewUser
 {
-
     @Size(min=8, max=32)
     @UsernameNotInUse
     @NotEmpty
@@ -22,6 +23,8 @@ public class NewUser
     @ValidPassword
     private String password;
 
+    @NotEmpty
+    @NotNull
     private String checkPassword;
 
     @NotEmpty
