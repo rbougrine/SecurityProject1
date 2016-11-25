@@ -1,38 +1,54 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Vibes</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
-    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel = "stylesheet"/>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script   src="http://code.jquery.com/jquery-3.1.1.js"   integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
+    <link href="../static/css/styles.css"
+          th:href="@{/css/styles.css}" rel = "stylesheet"/>
 </head>
 
 <body id="background" background="https://s18.postimg.org/e5uvpci55/background_Blue.jpg">
 <img id = 'logo' src="https://s15.postimg.org/asmn2pwa3/logo.png"/>
 
+<div th:if="${param.error}">
+    <script>alert("Wrong username or password");</script>
+</div>
+<div th:if="${param.logout}">
+    <script>alert("You have been logged out")</script>
+</div>
 <section id="login">
     <div class="container">
         <div class="row">
             <div class="col-xs-12">
                 <div class="form-wrap">
-                    <h1>Log in</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                    <h1>Login</h1>
+                    <form action="#" th:action="@{/login}" th:object="${login}" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
-                            <label for="Username" class="sr-only">Username</label>
-                            <input type="username" name="Username" id="Username" class="form-control" placeholder="Username"/>
+                            <label for="text" class="sr-only">Username</label>
+                            <input type="text" th:field="*{username}" name="email" id="email" class="form-control" placeholder="Username"  maxlength="32"/>
                         </div>
-
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password"/>
+                            <input type="password" th:field="*{password}" name="key" id="key" class="form-control" placeholder="Password"  maxlength="32"/>
                         </div>
-                        <div class="form-button">
-                            <input type="submit" id="btn-back" class="btn btn-custom btn-lg" value="Back"/>
-                            <input type="submit" id="btn-login" class="btn btn-custom btn-lg" value="Log in"/>
-                        </div>
+                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Login"/>
                     </form>
-                    <a href="resetpassword.html">Forgot your password</a>
+                    <table class = "forgotRegisterTable">
+                        <tr>
+                            <td>
+                                <a id = "forgotPassword" class = "forget" href="resetpassword">Forgot your password?</a>
+                            </td>
+                            <td>
+                                <a id = "registerNewDevice" class = "newdevice" href="register">Register a new device</a>
+                            </td>
+                        </tr>
+                    </table>
                     <hr/>
                 </div>
             </div> <!-- /.col-xs-12 -->
